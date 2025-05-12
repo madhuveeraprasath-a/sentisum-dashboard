@@ -16,7 +16,14 @@ const CreateButton = () => {
         }
         dropdownComponent={(close) => (
           <div className="w-[400px]">
-            <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 1</div>
+            <div
+              className="p-2 hover:bg-gray-100 cursor-pointer"
+              onClick={() => {
+                close();
+              }}
+            >
+              Option 1
+            </div>
             <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 2</div>
             <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 3</div>
           </div>
