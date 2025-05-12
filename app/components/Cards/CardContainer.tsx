@@ -3,15 +3,19 @@ import MetricCard from "./MetricCard";
 import ReportCard from "./ReportCard";
 import TextCard from "./TextCard";
 
-const componentMap: Record<string, React.FC | (() => JSX.Element)> = {
-  metric: MetricCard,
-  text: TextCard,
-  report: ReportCard,
-};
-
 const CardContainer = ({ data }: any) => {
-  const Component = componentMap[data?.type] || MetricCard;
-
+  const getComponent = () => {
+    switch (data?.type) {
+      case "metric":
+        return <MetricCard data={data} />;
+      case "text":
+        return <TextCard data={data} />;
+      case "report":
+        return <ReportCard data={data} />;
+      default:
+        return null;
+    }
+  };
   const getTagColor = () => {
     switch (data?.type) {
       case "metric":
@@ -47,12 +51,12 @@ const CardContainer = ({ data }: any) => {
       }}
     >
       <div
-        className={`absolute top-2 right-2 px-2 py-1 text-xs font-medium rounded ${getTagColor()}`}
+        className={`absolute top-0 left-4 px-2 py-1 text-xs font-medium rounded-b ${getTagColor()}`}
       >
-        {getTypeLabel()}
+        {data?.category} {getTypeLabel()}
       </div>
 
-      <div className="flex justify-between items-center mb-4 border-b border-neutral-300 p-4">
+      <div className="flex justify-between items-center mb-4 border-b border-neutral-300 p-4 pt-6">
         <div>
           <p className="text-[18px] font-semibold">{data?.title}</p>
           <p className="text-xs font-semibold text-neutral-600">
@@ -60,7 +64,7 @@ const CardContainer = ({ data }: any) => {
           </p>
         </div>
       </div>
-      <Component />
+      {getComponent()}
     </div>
   );
 };

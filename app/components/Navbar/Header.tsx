@@ -67,7 +67,7 @@ const Header = () => {
                       close();
                       onMenuClickHandler(menu);
                     }}
-                    className={`flex cursor-pointer items-center rounded-lg gap-1 hover:bg-neutral-300 p-4 transition-all duration-300`}
+                    className={`flex cursor-pointer items-center rounded-lg gap-1 hover:bg-neutral-200 p-4 transition-all duration-300`}
                     key={menu.name}
                   >
                     <div>{getIcon(menu.id)}</div>

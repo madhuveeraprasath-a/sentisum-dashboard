@@ -42,7 +42,7 @@ const UserInfo = ({ userData }: UserInfoInterface) => {
                   close();
                   onMenuClickHandler(item);
                 }}
-                className="flex items-center rounded-lg gap-1 px-4 py-2  cursor-pointer hover:bg-neutral-300"
+                className="flex items-center rounded-lg gap-1 px-4 py-2  cursor-pointer hover:bg-neutral-200"
               >
                 <div>{getIcon(item?.id)}</div>
                 <p className="text-sm text-black font-medium">{item?.name}</p>

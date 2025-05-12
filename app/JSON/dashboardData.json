@@ -5,32 +5,140 @@
     {
       "type": "report",
       "title": "My Report",
-      "description": "This is a description of my report"
+      "description": "This is a description of my report",
+      "category": "Gaming Support",
+      "stats": {
+        "title": "Sentisum Tags",
+        "description": "Volume and % Change of tags",
+        "tableHeaders": [
+          {
+            "label": "Sentisum Tags",
+            "value": "label"
+          },
+          {
+            "label": "Volume",
+            "value": "volume"
+          },
+          {
+            "label": "% Change",
+            "value": "percentChange"
+          }
+        ],
+        "tags": [
+          {
+            "label": "game crashed",
+            "volume": 8102,
+            "percentChange": 6,
+            "increased": true
+          },
+          {
+            "label": "game aborted",
+            "volume": 6259,
+            "percentChange": 4,
+            "increased": true
+          },
+          {
+            "label": "request refund",
+            "volume": 6015,
+            "percentChange": 3,
+            "increased": false
+          },
+          {
+            "label": "i didn't abort",
+            "volume": 3409,
+            "percentChange": 7,
+            "increased": false
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
+          }
+        ]
+      }
     },
     {
       "type": "metric",
       "title": "My Card",
-      "description": "This is a description of my card"
+      "description": "This is a description of my card",
+      "category": "Gaming Support",
+      "stats": {}
     },
     {
       "type": "text",
       "title": "My Text",
-      "description": "This is a description of my text"
+      "description": "This is a description of my text",
+      "stats": {}
     },
     {
       "type": "report",
       "title": "My Report",
-      "description": "This is a description of my report"
+      "description": "This is a description of my report",
+      "category": "Meal Kit Support",
+      "stats": {
+        "title": "Sentisum Tags",
+        "description": "Volume and % Change of tags",
+        "tableHeaders": [
+          {
+            "label": "Sentisum Tags",
+            "value": "label"
+          },
+          {
+            "label": "Volume",
+            "value": "volume"
+          },
+          {
+            "label": "% Change",
+            "value": "percentChange"
+          }
+        ],
+        "tags": [
+          {
+            "label": "game crashed",
+            "volume": 8102,
+            "percentChange": 6,
+            "increased": true
+          },
+          {
+            "label": "game aborted",
+            "volume": 6259,
+            "percentChange": 4,
+            "increased": true
+          },
+          {
+            "label": "request refund",
+            "volume": 6015,
+            "percentChange": 3,
+            "increased": false
+          },
+          {
+            "label": "i didn't abort",
+            "volume": 3409,
+            "percentChange": 7,
+            "increased": false
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
+          }
+        ]
+      }
     },
     {
       "type": "metric",
       "title": "My Card",
-      "description": "This is a description of my card"
+      "description": "This is a description of my card",
+      "category": "Gaming Support",
+      "stats": {}
     },
     {
       "type": "text",
       "title": "My Text",
-      "description": "This is a description of my text"
+      "description": "This is a description of my text",
+      "stats": {}
     }
   ]
 }

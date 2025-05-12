@@ -26,7 +26,7 @@ const CreateButton = () => {
             {CreateOptions?.map((item: CreateOptionInterface) => (
               <div
                 key={item.title}
-                className="flex items-center gap-2 p-4 rounded-lg cursor-pointer hover:bg-neutral-400"
+                className="flex items-center gap-2 p-4 rounded-lg cursor-pointer hover:bg-neutral-200"
                 onClick={() => {
                   close();
                 }}
