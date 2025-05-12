@@ -1,5 +1,3 @@
-import { MenuProps } from "antd";
-
 export interface HeaderMenu {
   id: string;
   name: string;
@@ -16,5 +14,10 @@ export const HEADER_MENUS = [
     id: "tickets",
     name: "Tickets",
     redirectionLink: "/tickets",
+  },
+  {
+    id: "manage-dashboard",
+    name: "Manage Dashboards",
+    redirectionLink: "/manage-dashboards",
   },
 ];

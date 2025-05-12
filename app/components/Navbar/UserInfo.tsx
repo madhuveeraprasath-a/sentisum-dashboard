@@ -1,17 +1,11 @@
-import { Avatar } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserInfoInterface } from "@/app/constants/Interface";
+import Avatar from "./Avatar";
 import HoverDropdown from "./HoverDropdown";
 
-const UserInfo = () => {
+const UserInfo = ({ userData }: UserInfoInterface) => {
   return (
     <HoverDropdown
-      triggerComponent={
-        <Avatar
-          size={44}
-          icon={<UserOutlined />}
-          style={{ cursor: "pointer" }}
-        />
-      }
+      triggerComponent={<Avatar userData={userData} />}
       dropdownComponent={
         <div className="w-[400px]">
           <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 1</div>

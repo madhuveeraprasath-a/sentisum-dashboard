@@ -1,8 +1,6 @@
-interface HomeIconProps {
-  iconColor?: string;
-}
+import { IconProps } from "@/app/constants/Interface";
 
-const HomeIcon = (props: HomeIconProps) => {
+const HomeIcon = (props: IconProps) => {
   const { iconColor } = props;
   return (
     <svg

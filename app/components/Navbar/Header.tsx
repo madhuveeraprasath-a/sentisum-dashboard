@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { HEADER_MENUS, HeaderMenu } from "../../constants/HeaderConstants";
 import { getIcon } from "../../utills/getIcon";
-import { usePathname, useRouter } from "next/navigation";
-import UserInfo from "./UserInfo";
 import SubscribeButton from "../SubscribeButton";
-import CreateButton from "../CreateButton";
+import UserInfo from "./UserInfo";
+import userData from "../../JSON/userInfo.json";
 
 const Header = () => {
   const pathname = usePathname();
@@ -43,9 +43,8 @@ const Header = () => {
         ))}
       </div>
       <div className="flex items-center justify-center gap-4">
-        <UserInfo />
+        <UserInfo userData={userData} />
         <SubscribeButton />
-        <CreateButton />
       </div>
     </div>
   );
