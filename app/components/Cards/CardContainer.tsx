@@ -44,7 +44,7 @@ const CardContainer = ({ data }: any) => {
 
   return (
     <div
-      className="relative min-h-[400px] cursor-pointer bg-white rounded-lg transform transition-transform duration-500 hover:scale-[1.02] hover:border-primary-300 hover:border"
+      className="relative min-h-[400px] overflow-y-scroll cursor-pointer bg-white rounded-lg transform transition-transform duration-500 hover:scale-[1.02] hover:border-primary-300 hover:border"
       style={{
         boxShadow:
           "rgba(0, 0, 0, 0.05) 2px 2px 4px, rgba(0, 0, 0, 0.05) -2px -2px 4px",

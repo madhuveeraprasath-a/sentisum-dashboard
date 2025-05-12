@@ -123,6 +123,30 @@
             "volume": 3248,
             "percentChange": 1,
             "increased": true
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
+          },
+          {
+            "label": "app crashed",
+            "volume": 3248,
+            "percentChange": 1,
+            "increased": true
           }
         ]
       }
