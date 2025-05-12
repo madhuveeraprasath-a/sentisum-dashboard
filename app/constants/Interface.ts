@@ -25,6 +25,7 @@ export interface DashboardItem {
   stats?: Stats;
   category?: string;
   metrics?: Card[];
+  text?: string | TrustedHTML | undefined;
 }
 export interface Card {
   title: string;

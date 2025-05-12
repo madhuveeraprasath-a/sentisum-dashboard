@@ -23,6 +23,7 @@ const CardContainer = (props: CardContainerProps) => {
         return null;
     }
   };
+
   const getTagColor = () => {
     switch (data?.type) {
       case "metric":

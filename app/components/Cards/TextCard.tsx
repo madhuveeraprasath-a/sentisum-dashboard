@@ -6,8 +6,12 @@ interface TextCardProps {
 
 const TextCard = (props: TextCardProps) => {
   const { data } = props;
-  console.log("MetricCard data", data);
-  return <div className="px-4">Test</div>;
+
+  return (
+    <div className="px-4">
+      <div dangerouslySetInnerHTML={{ __html: data?.text || "" }}></div>
+    </div>
+  );
 };
 
 export default TextCard;
