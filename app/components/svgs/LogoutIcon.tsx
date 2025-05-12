@@ -7,7 +7,7 @@ const LogoutIcon = (props: IconProps) => {
     <svg
       stroke={iconColor || "#000"}
       fill="none"
-      stroke-width="2"
+      strokeWidth="2"
       viewBox="0 0 24 24"
       strokeLinecap="round"
       strokeLinejoin="round"

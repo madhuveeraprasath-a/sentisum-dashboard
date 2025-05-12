@@ -2,7 +2,7 @@ import { useRef, useState, ReactNode } from "react";
 
 interface HoverDropdownProps {
   triggerComponent: ReactNode;
-  dropdownComponent: ReactNode;
+  dropdownComponent: (closeDropdown: () => void) => ReactNode;
   offsetTop?: number;
   offsetLeft?: number;
   delay?: number;
@@ -41,7 +41,7 @@ const HoverDropdown = ({
           className="absolute z-10 bg-white shadow rounded-lg border border-neutral-300"
           style={{ top: offsetTop, left: offsetLeft }}
         >
-          {dropdownComponent}
+          {dropdownComponent(() => setShow(false))}
         </div>
       )}
     </div>

@@ -56,14 +56,15 @@ const Header = () => {
               <CaretDownOutlined style={{ color: "#000" }} />
             </div>
           }
-          dropdownComponent={
+          dropdownComponent={(close) => (
             <div className="w-[250px]">
               {HEADER_MORE_MENUS?.map((menu: HeaderMenu) => (
                 <div
-                  onClick={() => onMenuClickHandler(menu)}
-                  className={`${
-                    pathname == menu.redirectionLink && "bg-neutral-300"
-                  } flex cursor-pointer items-center rounded-lg gap-1 hover:bg-neutral-300 p-4 transition-all duration-300`}
+                  onClick={() => {
+                    close();
+                    onMenuClickHandler(menu);
+                  }}
+                  className={`flex cursor-pointer items-center rounded-lg gap-1 hover:bg-neutral-300 p-4 transition-all duration-300`}
                   key={menu.name}
                 >
                   <div>{getIcon(menu.id)}</div>
@@ -73,7 +74,7 @@ const Header = () => {
                 </div>
               ))}
             </div>
-          }
+          )}
           offsetTop={28}
           offsetLeft={0}
         />

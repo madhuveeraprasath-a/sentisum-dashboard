@@ -6,7 +6,7 @@ const ActionTrackingIcon = (props: IconProps) => {
     <svg
       stroke={iconColor || "#000"}
       fill={iconColor || "#000"}
-      stroke-width="2"
+      strokeWidth="2"
       viewBox="0 0 512 512"
       height="1em"
       width="1em"

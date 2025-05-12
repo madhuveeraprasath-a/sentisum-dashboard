@@ -6,13 +6,25 @@ import {
   USER_INFO_DROPDOWN,
 } from "@/app/constants/HeaderConstants";
 import { getIcon } from "@/app/utills/getIcon";
+import { usePathname, useRouter } from "next/navigation";
 
 const UserInfo = ({ userData }: UserInfoInterface) => {
   const { name, email } = userData;
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const onMenuClickHandler = (menu: HeaderMenu) => {
+    if (pathname == menu.redirectionLink) return;
+    if (menu?.redirectionLink) {
+      router.push(menu?.redirectionLink);
+    }
+  };
+
   return (
     <HoverDropdown
       triggerComponent={<Avatar userData={userData} />}
-      dropdownComponent={
+      dropdownComponent={(close) => (
         <div className="w-[300px]">
           <div>
             <div className="flex items-center gap-2 border-b border-neutral-400 p-4">
@@ -26,6 +38,10 @@ const UserInfo = ({ userData }: UserInfoInterface) => {
             {USER_INFO_DROPDOWN.map((item: HeaderMenu) => (
               <div
                 key={item?.id}
+                onClick={() => {
+                  close();
+                  onMenuClickHandler(item);
+                }}
                 className="flex items-center rounded-lg gap-1 px-4 py-2  cursor-pointer hover:bg-neutral-300"
               >
                 <div>{getIcon(item?.id)}</div>
@@ -34,7 +50,7 @@ const UserInfo = ({ userData }: UserInfoInterface) => {
             ))}
           </div>
         </div>
-      }
+      )}
       offsetTop={48}
       offsetLeft={-260}
     />
