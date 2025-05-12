@@ -25,7 +25,7 @@ const iconMap: Record<string, JSX.Element> = {
   "theme-management": <ThemeIcon />,
   "action-tracking": <ActionTrackingIcon />,
   report: <CreateReportIcon />,
-  card: <CreateCardIcon />,
+  metric: <CreateCardIcon />,
   text: <CreateTextIcon />,
 };
 
