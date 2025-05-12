@@ -1,3 +1,5 @@
+import { MenuProps } from "antd";
+
 export interface HeaderMenu {
   id: string;
   name: string;

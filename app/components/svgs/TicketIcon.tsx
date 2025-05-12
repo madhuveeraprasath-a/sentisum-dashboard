@@ -8,7 +8,7 @@ const TicketIcon = (props: HomeIconProps) => {
     <svg
       stroke={iconColor || "#000"}
       fill="none"
-      className="mt-1"
+      className="mt-[2px]"
       strokeWidth="2"
       viewBox="0 0 24 24"
       strokeLinecap="round"

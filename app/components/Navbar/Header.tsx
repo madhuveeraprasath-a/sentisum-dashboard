@@ -3,6 +3,9 @@ import Image from "next/image";
 import { HEADER_MENUS, HeaderMenu } from "../../constants/HeaderConstants";
 import { getIcon } from "../../utills/getIcon";
 import { usePathname, useRouter } from "next/navigation";
+import UserInfo from "./UserInfo";
+import SubscribeButton from "../SubscribeButton";
+import CreateButton from "../CreateButton";
 
 const Header = () => {
   const pathname = usePathname();
@@ -29,17 +32,21 @@ const Header = () => {
             onClick={() => onMenuClickHandler(menu)}
             className={`${
               pathname == menu.redirectionLink && "bg-neutral-300"
-            } flex items-center justify-center gap-1 hover:bg-neutral-300 p-2 rounded-lg transition-all duration-300`}
+            } flex cursor-pointer items-center justify-center gap-1 hover:bg-neutral-300 p-2 rounded-lg transition-all duration-300`}
             key={menu.name}
           >
             <div>{getIcon(menu.id)}</div>
-            <div className="text-center text-black font-semibold cursor-pointer">
+            <div className="text-center text-black font-semibold ">
               {menu.name.toUpperCase()}
             </div>
           </div>
         ))}
       </div>
-      <div></div>
+      <div className="flex items-center justify-center gap-4">
+        <UserInfo />
+        <SubscribeButton />
+        <CreateButton />
+      </div>
     </div>
   );
 };
