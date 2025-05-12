@@ -15,7 +15,6 @@ const HoverDropdown = ({
   offsetLeft = 0,
   delay = 200,
 }: HoverDropdownProps) => {
-
   const [show, setShow] = useState(false);
   const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -36,8 +35,7 @@ const HoverDropdown = ({
       onMouseLeave={handleMouseLeave}
       className="relative inline-block"
     >
-      {triggerComponent}
-
+      <div className="cursor-pointer">{triggerComponent}</div>
       {show && (
         <div
           className="absolute z-10 bg-white shadow rounded-lg border border-neutral-300"

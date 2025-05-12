@@ -1,6 +1,6 @@
 import { IconProps } from "@/app/constants/Interface";
 
-const Logout = (props: IconProps) => {
+const LogoutIcon = (props: IconProps) => {
   const { iconColor } = props;
 
   return (
@@ -22,4 +22,4 @@ const Logout = (props: IconProps) => {
   );
 };
 
-export default Logout;
+export default LogoutIcon;
