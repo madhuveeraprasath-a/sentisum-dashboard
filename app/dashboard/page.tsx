@@ -56,7 +56,7 @@ const Dashboard = () => {
         <DashboardLoading />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {dashboardData.data.map((item, index) => (
+          {dashboardData?.data?.map((item, index) => (
             <div key={`${item.title}+${index}`}>
               <CardContainer data={item} />
             </div>

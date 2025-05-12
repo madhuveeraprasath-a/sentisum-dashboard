@@ -1,26 +1,14 @@
+import { DashboardItem } from "@/app/constants/Interface";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 
-interface Stats {
-  title: string;
-  description: string;
-  tableHeaders: { label: string; value: string }[];
-  tags: {
-    label: string;
-    volume: number;
-    percentChange: number;
-    increased: boolean;
-  }[];
-}
-
 interface ReportCardProps {
-  data: {
-    stats: Stats;
-  };
+  data: DashboardItem;
 }
 
-const ReportCard = ({ data }: ReportCardProps) => {
-  const headers = data.stats.tableHeaders;
-  const rows = data.stats.tags;
+const ReportCard = (props: ReportCardProps) => {
+  const { data } = props;
+  const headers = data?.stats?.tableHeaders;
+  const rows = data?.stats?.tags;
 
   return (
     <div className="px-4">
@@ -28,7 +16,7 @@ const ReportCard = ({ data }: ReportCardProps) => {
         <table className="w-full table-auto">
           <thead className="sticky top-0 bg-neutral-100 z-10">
             <tr>
-              {headers.map((header) => (
+              {headers?.map((header) => (
                 <th
                   key={header.value}
                   className="text-left px-4 py-2 border-b border-neutral-300"
@@ -39,14 +27,14 @@ const ReportCard = ({ data }: ReportCardProps) => {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, rowIndex) => (
+            {rows?.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
                 className={`hover:shadow-md transition-shadow ${
                   row.increased && "bg-error-100"
                 }`}
               >
-                {headers.map((header) => {
+                {headers?.map((header) => {
                   const value = row[header.value as keyof typeof row];
                   const isPercentage = header.value === "percentChange";
                   return (

@@ -1,9 +1,16 @@
-import { JSX } from "react";
+import { DashboardItem } from "@/app/constants/Interface";
 import MetricCard from "./MetricCard";
 import ReportCard from "./ReportCard";
 import TextCard from "./TextCard";
 
-const CardContainer = ({ data }: any) => {
+interface CardContainerProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: DashboardItem | any;
+}
+
+const CardContainer = (props: CardContainerProps) => {
+  const { data } = props;
+
   const getComponent = () => {
     switch (data?.type) {
       case "metric":
