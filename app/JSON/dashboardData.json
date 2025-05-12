@@ -8,7 +8,7 @@
       "description": "This is a description of my report"
     },
     {
-      "type": "card",
+      "type": "metric",
       "title": "My Card",
       "description": "This is a description of my card"
     },
@@ -23,7 +23,7 @@
       "description": "This is a description of my report"
     },
     {
-      "type": "card",
+      "type": "metric",
       "title": "My Card",
       "description": "This is a description of my card"
     },
