@@ -3,13 +3,34 @@
   "description": "This is a description of my dashboard data",
   "data": [
     {
-      "type": "report"
+      "type": "report",
+      "title": "My Report",
+      "description": "This is a description of my report"
     },
     {
-      "type": "card"
+      "type": "card",
+      "title": "My Card",
+      "description": "This is a description of my card"
     },
     {
-      "type": "text"
+      "type": "text",
+      "title": "My Text",
+      "description": "This is a description of my text"
+    },
+    {
+      "type": "report",
+      "title": "My Report",
+      "description": "This is a description of my report"
+    },
+    {
+      "type": "card",
+      "title": "My Card",
+      "description": "This is a description of my card"
+    },
+    {
+      "type": "text",
+      "title": "My Text",
+      "description": "This is a description of my text"
     }
   ]
 }

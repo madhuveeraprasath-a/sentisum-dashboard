@@ -1,3 +1,4 @@
+import { PlusCircleOutlined } from "@ant-design/icons";
 import {
   CreateOptionInterface,
   CreateOptions,
@@ -17,6 +18,7 @@ const CreateButton = () => {
             className="bg-primary-500 text-white px-4 py-2 flex gap-1 rounded items-center font-semibold hover:bg-primary-600 transition-all duration-300"
           >
             CREATE
+            <PlusCircleOutlined />
           </button>
         }
         dropdownComponent={(close) => (
