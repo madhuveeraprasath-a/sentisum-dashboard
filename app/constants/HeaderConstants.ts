@@ -72,13 +72,16 @@ export const CreateOptions = [
   {
     type: "report",
     title: "Create Report",
+    filterName: "Report",
   },
   {
-    type: "card",
+    type: "metric",
     title: "Create Metric Card",
+    filterName: "Metric",
   },
   {
     type: "text",
     title: "Add text",
+    filterName: "Text",
   },
 ];
