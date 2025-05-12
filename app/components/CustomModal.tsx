@@ -5,7 +5,7 @@ interface CustomModalProps {
   isOpen: boolean;
   children: React.ReactNode;
   className?: string;
-  modalClass?: any;
+  modalClass?: string;
 }
 const CustomModal = (props: CustomModalProps) => {
   const { isOpen, children, className, modalClass } = props;
