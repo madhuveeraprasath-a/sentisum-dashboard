@@ -4,6 +4,11 @@ export interface HeaderMenu {
   redirectionLink?: string;
 }
 
+export interface CreateOptionInterface {
+  type: string;
+  title: string;
+}
+
 export const HEADER_MENUS = [
   {
     id: "home",
@@ -60,5 +65,20 @@ export const USER_INFO_DROPDOWN = [
     id: "logout",
     name: "Logout",
     redirectionLink: "/common-page",
+  },
+];
+
+export const CreateOptions = [
+  {
+    type: "report",
+    title: "Create Report",
+  },
+  {
+    type: "card",
+    title: "Create Metric Card",
+  },
+  {
+    type: "text",
+    title: "Add text",
   },
 ];

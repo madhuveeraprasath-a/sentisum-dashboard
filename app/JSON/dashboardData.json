@@ -1,0 +1,15 @@
+{
+  "title": "This is my dashboard data",
+  "description": "This is a description of my dashboard data",
+  "data": [
+    {
+      "type": "report"
+    },
+    {
+      "type": "card"
+    },
+    {
+      "type": "text"
+    }
+  ]
+}

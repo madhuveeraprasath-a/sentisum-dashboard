@@ -1,3 +1,8 @@
+import {
+  CreateOptionInterface,
+  CreateOptions,
+} from "../constants/HeaderConstants";
+import { getIcon } from "../utills/getIcon";
 import HoverDropdown from "./Navbar/HoverDropdown";
 
 const CreateButton = () => {
@@ -15,21 +20,27 @@ const CreateButton = () => {
           </button>
         }
         dropdownComponent={(close) => (
-          <div className="w-[400px]">
-            <div
-              className="p-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => {
-                close();
-              }}
-            >
-              Option 1
-            </div>
-            <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 2</div>
-            <div className="p-2 hover:bg-gray-100 cursor-pointer">Option 3</div>
+          <div className="w-[200px]">
+            {CreateOptions?.map((item: CreateOptionInterface) => (
+              <div
+                key={item.title}
+                className="flex items-center gap-2 p-4 rounded-lg cursor-pointer hover:bg-neutral-400"
+                onClick={() => {
+                  close();
+                }}
+              >
+                <div>{getIcon(item.type)}</div>
+                <div className="flex flex-col">
+                  <h4 className="text-sm font-semibold text-black">
+                    {item.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
           </div>
         )}
         offsetTop={48}
-        offsetLeft={-350}
+        offsetLeft={-110}
       />
     </div>
   );
