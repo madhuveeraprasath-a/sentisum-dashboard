@@ -29,7 +29,7 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <div className="hidden md:block">
       <div className="h-[80px] border-b border-neutral-400 text-white flex items-center justify-between shadow-lg px-10 fixed left-0 right-0 z-10 bg-neutral-100">
         <div className="cursor-pointer">
           <Image

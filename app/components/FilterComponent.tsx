@@ -28,7 +28,7 @@ const FilterComponent = (props: FilterComponentProps) => {
   };
 
   return (
-    <div className="flex items-center gap-2 p-4 bg-neutral-300 w-fit rounded-lg">
+    <div className="flex items-center gap-2 p-4 bg-neutral-300 w-full rounded-lg md:w-fit overflow-x-auto">
       {renderFilterOption("all", "All")}
       {CreateOptions?.map((item) =>
         renderFilterOption(item.type, item.filterName)

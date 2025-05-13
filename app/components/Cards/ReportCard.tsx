@@ -19,7 +19,7 @@ const ReportCard = (props: ReportCardProps) => {
               {headers?.map((header) => (
                 <th
                   key={header.value}
-                  className="text-left px-4 py-2 border-b border-neutral-300"
+                  className="text-xs md:text-[16px] text-left px-4 py-2 border-b border-neutral-300"
                 >
                   {header.label}
                 </th>

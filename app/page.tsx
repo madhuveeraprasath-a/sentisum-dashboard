@@ -18,9 +18,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex">
-      <div className="w-1/2 bg-neutral-100 flex items-center justify-center p-10">
-        <div className="absolute top-4 left-12">
+    <div className="min-h-screen flex flex-col md:flex-row">
+      <div className="hidden md:flex w-full md:w-1/2 bg-neutral-100 items-center justify-center p-10 relative">
+        <div className="absolute top-4 left-6">
           <Image
             src="/images/sentisumLogo.webp"
             alt="Logo"
@@ -29,12 +29,14 @@ export default function Home() {
             className="mb-4"
           />
         </div>
+
         <div>
-          <div className="text-[54px] font-bold leading-snug">
-            Fix today's <span className="text-primary-500">experience</span>,
+          <div className="text-[36px] md:text-[54px] font-bold leading-snug">
+            Fix today&apos;s{" "}
+            <span className="text-primary-500">experience</span>,
             <br />
-            Build tomorrow's{" "}
-            <span className="bg-primary-500 text-neutral-100  px-4 py-2 rounded-3xl">
+            Build tomorrow&apos;s{" "}
+            <span className="bg-primary-500 text-neutral-100 px-4 py-2 rounded-3xl">
               brand.
             </span>
           </div>
@@ -48,7 +50,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-1/2 flex items-center justify-center bg-neutral-200">
+
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-neutral-200">
         <LoginComponent />
       </div>
     </div>

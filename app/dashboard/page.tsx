@@ -2,7 +2,6 @@
 
 import { Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import CardContainer from "../components/Cards/CardContainer";
 import EmptyCard from "../components/Cards/EmptyCard";
@@ -21,7 +20,6 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [showTextModal, setShowTextModal] = useState(false);
   const [form] = Form.useForm();
-  const router = useRouter();
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 3000);
@@ -178,15 +176,17 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="px-10 py-5 sticky top-[80px] z-40 bg-white pb-5  flex flex-col gap-5 overflow-visible">
-        <div className="flex justify-between items-center border-b border-neutral-300 pb-5">
+      <div className="px-4 md:px-10 py-5 sticky top-0 md:top-[80px] z-40 bg-white pb-5 flex flex-col gap-5 overflow-visible">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-neutral-300 pb-5 gap-3">
           <div>
-            <p className="text-xl font-semibold">
+            <p className="text-lg md:text-xl font-semibold">
               {dashboardInitialData.title}
             </p>
-            <p>{dashboardInitialData.description}</p>
+            <p className="text-sm md:text-base text-neutral-600">
+              {dashboardInitialData.description}
+            </p>
           </div>
-          <div>
+          <div className="w-full md:w-auto">
             <CreateButton onCreateClickHandler={onCreateClickHandler} />
           </div>
         </div>
@@ -196,11 +196,12 @@ const Dashboard = () => {
           activeFilter={activeFilter}
         />
       </div>
-      <div className="container flex flex-col gap-5 mx-auto mt-5 p-4">
+
+      <div className="container flex flex-col gap-5 mx-auto mt-5 px-4 md:px-10">
         {loading ? (
           <DashboardLoading />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
             {filteredData.map((item, index) => (
               <div key={`${item.title}+${index}`}>
                 <CardContainer data={item} />
@@ -216,7 +217,7 @@ const Dashboard = () => {
         {showTextModal && (
           <CustomModal
             isOpen={showTextModal}
-            modalClass="w-[600px] h-auto rounded"
+            modalClass="w-[95%] md:w-[600px] h-auto rounded"
           >
             <div
               onClick={() => setShowTextModal(false)}

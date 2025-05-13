@@ -1,3 +1,4 @@
+import useIsMobile from "@/app/utills/UseIsMobile";
 import { useRef, useState, useEffect, ReactNode } from "react";
 import ReactDOM from "react-dom";
 
@@ -16,6 +17,7 @@ const HoverDropdown = ({
   offsetLeft = 0,
   delay = 200,
 }: HoverDropdownProps) => {
+  const isMobile = useIsMobile();
   const [show, setShow] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -45,8 +47,9 @@ const HoverDropdown = ({
   return (
     <div
       ref={triggerRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+      onClick={isMobile ? () => setShow((prev) => !prev) : undefined}
       className="inline-block"
     >
       <div className="cursor-pointer">{triggerComponent}</div>
@@ -59,10 +62,12 @@ const HoverDropdown = ({
             style={{
               position: "absolute",
               top: position.top,
-              left: position.left,
+              left: isMobile ? 10 : position.left,
             }}
           >
-            {dropdownComponent(() => setShow(false))}
+            {dropdownComponent(() => {
+              setShow(false);
+            })}
           </div>,
           document.body
         )}

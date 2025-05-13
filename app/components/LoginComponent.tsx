@@ -38,7 +38,7 @@ const LoginComponent = () => {
   };
 
   return (
-    <div className="bg-neutral-100 shadow rounded-xl p-8 w-[500px]">
+    <div className="bg-neutral-100 md:shadow rounded-xl md:p-8 p-4 w-[500px]">
       {contextHolder}
       <p className="font-semibold text-lg">Login to your sentiSum dashboard</p>
       <div className="mt-5">
@@ -84,7 +84,7 @@ const LoginComponent = () => {
           </Form.Item>
 
           <p className="text-center">
-            Don't have a SentiSum account?{" "}
+            Don&apos;t have a SentiSum account?{" "}
             <span
               onClick={createAccountHandler}
               className="text-primary-500 font-semibold cursor-pointer"
