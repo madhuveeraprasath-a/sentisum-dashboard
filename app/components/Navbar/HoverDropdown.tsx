@@ -1,4 +1,5 @@
-import { useRef, useState, ReactNode } from "react";
+import { useRef, useState, useEffect, ReactNode } from "react";
+import ReactDOM from "react-dom";
 
 interface HoverDropdownProps {
   triggerComponent: ReactNode;
@@ -16,6 +17,8 @@ const HoverDropdown = ({
   delay = 200,
 }: HoverDropdownProps) => {
   const [show, setShow] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLDivElement>(null);
   const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -29,21 +32,40 @@ const HoverDropdown = ({
     hideTimeoutRef.current = setTimeout(() => setShow(false), delay);
   };
 
+  useEffect(() => {
+    if (show && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setPosition({
+        top: rect.bottom + window.scrollY + offsetTop,
+        left: rect.left + window.scrollX + offsetLeft,
+      });
+    }
+  }, [show, offsetTop, offsetLeft]);
+
   return (
     <div
+      ref={triggerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative inline-block"
+      className="inline-block"
     >
       <div className="cursor-pointer">{triggerComponent}</div>
-      {show && (
-        <div
-          className="absolute z-10 bg-white shadow rounded-lg border border-neutral-300"
-          style={{ top: offsetTop, left: offsetLeft }}
-        >
-          {dropdownComponent(() => setShow(false))}
-        </div>
-      )}
+      {show &&
+        ReactDOM.createPortal(
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="absolute z-[9999] bg-white shadow-lg rounded-lg border border-neutral-300"
+            style={{
+              position: "absolute",
+              top: position.top,
+              left: position.left,
+            }}
+          >
+            {dropdownComponent(() => setShow(false))}
+          </div>,
+          document.body
+        )}
     </div>
   );
 };

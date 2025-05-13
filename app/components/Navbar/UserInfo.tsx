@@ -51,7 +51,7 @@ const UserInfo = ({ userData }: UserInfoInterface) => {
           </div>
         </div>
       )}
-      offsetTop={48}
+      offsetTop={4}
       offsetLeft={-260}
     />
   );

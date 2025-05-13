@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useEffect, useMemo, useState } from "react";
 import CardContainer from "../components/Cards/CardContainer";
@@ -174,7 +174,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="px-10 py-5 sticky top-[80px] z-20 bg-white pb-5  flex flex-col gap-5">
+      <div className="px-10 py-5 sticky top-[80px] z-40 bg-white pb-5  flex flex-col gap-5 overflow-visible">
         <div className="flex justify-between items-center border-b border-neutral-300 pb-5">
           <div>
             <p className="text-xl font-semibold">
@@ -210,7 +210,10 @@ const Dashboard = () => {
         )}
 
         {showTextModal && (
-          <CustomModal isOpen={showTextModal} modalClass="w-[600px] h-auto">
+          <CustomModal
+            isOpen={showTextModal}
+            modalClass="w-[600px] h-auto rounded"
+          >
             <div
               onClick={() => setShowTextModal(false)}
               className="absolute top-2 right-2 cursor-pointer"
@@ -262,14 +265,9 @@ const Dashboard = () => {
                 </Form.Item>
 
                 <Form.Item className="text-center">
-                  <Button
-                    className="w-full font-semibold"
-                    type="primary"
-                    htmlType="submit"
-                    size="large"
-                  >
+                  <button className="w-full bg-primary-500 h-11 text-white text-center justify-center px-4 py-2 flex gap-1 rounded items-center font-semibold hover:bg-primary-600 transition-all duration-300">
                     ADD TEXT
-                  </Button>
+                  </button>
                 </Form.Item>
               </Form>
             </div>

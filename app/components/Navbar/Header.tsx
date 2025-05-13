@@ -71,14 +71,14 @@ const Header = () => {
                     key={menu.name}
                   >
                     <div>{getIcon(menu.id)}</div>
-                    <div className="text-center text-black font-semibold ">
+                    <div className="text-center text-black font-semibold text-xs">
                       {menu.name.toUpperCase()}
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            offsetTop={28}
+            offsetTop={2}
             offsetLeft={0}
           />
         </div>
