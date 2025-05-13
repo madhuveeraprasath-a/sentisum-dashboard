@@ -72,7 +72,7 @@
           "volume": 10000,
           "category": "Gaming Support",
           "increased": true,
-          "percentChange": 25
+          "percentChange": "25%"
         },
         {
           "title": "% Of Tickets",
@@ -86,14 +86,14 @@
           "volume": "90%",
           "category": "Gaming Support",
           "increased": true,
-          "percentChange": 5
+          "percentChange": "5%"
         },
         {
           "title": "Sentiment",
           "volume": "10%",
           "category": "Gaming Support",
           "increased": false,
-          "percentChange": 5
+          "percentChange": "5%"
         }
       ],
       "text": ""
@@ -201,7 +201,7 @@
           "volume": 10000,
           "category": "Gaming Support",
           "increased": true,
-          "percentChange": 25
+          "percentChange": "25%"
         },
         {
           "title": "% Of Tickets",
@@ -215,14 +215,14 @@
           "volume": "90%",
           "category": "Gaming Support",
           "increased": true,
-          "percentChange": 5
+          "percentChange": "5%"
         },
         {
           "title": "Sentiment",
           "volume": "10%",
           "category": "Gaming Support",
           "increased": false,
-          "percentChange": 5
+          "percentChange": "5%"
         }
       ],
       "text": ""

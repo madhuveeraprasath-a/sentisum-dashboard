@@ -23,10 +23,14 @@ const Header = () => {
     return null;
   }
 
+  const onLogoClickHandler = () => {
+    window.open("https://www.sentisum.com", "_blank");
+  };
+
   return (
     <div className="hidden md:block">
       <div className="h-[80px] border-b border-neutral-400 text-white flex items-center justify-between shadow-lg px-10 fixed left-0 right-0 z-10 bg-neutral-100">
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={onLogoClickHandler}>
           <Image
             src="/images/sentisumLogo.webp"
             alt="Logo"

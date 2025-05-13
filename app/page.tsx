@@ -17,10 +17,17 @@ export default function Home() {
     }
   }, []);
 
+  const onLogoClickHandler = () => {
+    window.open("https://www.sentisum.com", "_blank");
+  };
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       <div className="hidden md:flex w-full md:w-1/2 bg-neutral-100 items-center justify-center p-10 relative">
-        <div className="absolute top-4 left-6">
+        <div
+          className="absolute top-4 left-6 cursor-pointer"
+          onClick={onLogoClickHandler}
+        >
           <Image
             src="/images/sentisumLogo.webp"
             alt="Logo"

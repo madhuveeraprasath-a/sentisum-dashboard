@@ -9,7 +9,7 @@ const Avatar = ({ userData }: UserInfoInterface) => {
     <React.Fragment>
       {imageUrl ? (
         <div className="rounded-full">
-          <Image src={"/images/logo.webp"} height={44} width={44} alt={name} />
+          <Image src={imageUrl} height={44} width={44} alt={name} />
         </div>
       ) : (
         <div className="h-11 w-11 rounded-full border border-neutral-400 bg-warning-500 flex items-center justify-center">
