@@ -1,8 +1,8 @@
 "use client";
-import { HEADER_MENUS, HeaderMenu } from "@/app/constants/HeaderConstants";
+import { HEADER_MENUS } from "@/app/constants/HeaderConstants";
 import { getIcon } from "@/app/utills/getIcon";
 import { useMenuClickHandler } from "@/app/utills/useMenuClickHandler";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const BottomNav = () => {
   const pathname = usePathname();
