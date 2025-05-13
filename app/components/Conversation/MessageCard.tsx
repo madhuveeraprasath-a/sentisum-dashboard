@@ -16,9 +16,12 @@ const MessageCard = (props: MessageCardProps) => {
       key={conversation.ticketId}
       onClick={() => setSelectedTicket(conversation)}
     >
-      <p className="font-semibold text-base">
-        {conversation.conversations[0]?.senderName}
-      </p>
+      <div className="flex justify-between items-center">
+        <p className="font-semibold text-base">
+          {conversation.conversations[0]?.senderName}
+        </p>
+      </div>
+
       <div className="flex items-center justify-between">
         <p className="text-xs text-neutral-600 w-1/3 line-clamp-1">
           {conversation.conversations[0]?.message}

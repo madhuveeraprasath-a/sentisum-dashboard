@@ -4,8 +4,8 @@ export interface IconProps {
 
 export interface User {
   name: string;
-  email: string;
   id: number;
+  email?: string;
   imageUrl?: string;
 }
 
