@@ -1,6 +1,8 @@
 "use client";
 
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { useEffect, useState } from "react";
 import CardContainer from "../components/Cards/CardContainer";
 import EmptyCard from "../components/Cards/EmptyCard";
 import CreateButton from "../components/CreateButton";
@@ -9,8 +11,6 @@ import FilterComponent from "../components/FilterComponent";
 import DashboardLoading from "../components/Loaders/DashboardLoading";
 import { CloseIcon } from "../components/svgs/CloseIcon";
 import dashboardInitialData from "../JSON/dashboardData.json";
-import { useEffect, useState } from "react";
-import TextArea from "antd/es/input/TextArea";
 
 const Dashboard = () => {
   const [rawData, setRawData] = useState(dashboardInitialData.data); // holds all data
@@ -165,7 +165,7 @@ const Dashboard = () => {
     }, 500);
   };
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: { title: ""; description: ""; content: "" }) => {
     if (!textForm.title || !textForm.content) {
       return;
     }
@@ -177,7 +177,7 @@ const Dashboard = () => {
       stats: {},
       metrics: [],
       text: values.content,
-      category: values.category,
+      category: "Gaming Support",
     };
 
     const updatedRaw = [...rawData, newTextCard];
