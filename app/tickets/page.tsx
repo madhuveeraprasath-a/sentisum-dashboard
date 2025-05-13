@@ -5,14 +5,16 @@ import conversationData from "../JSON/conversationData.json";
 import MessageCard from "../components/Conversation/MessageCard";
 import MessageInfoCard from "../components/Conversation/MessageInfoCard";
 import EmptyConversation from "../components/Conversation/EmptyConversation";
-import ConversationLoading from "../components/Conversation/ConversationLoading";
+import ConversationLoading from "../components/Loaders/ConversationLoading";
 import Avatar from "../components/Navbar/Avatar";
 import ConversationFilter from "../components/Conversation/ConversationFilter";
+import { useAuthRedirect } from "../utills/useAuthRedirect";
 
 const sentiments = ["all", "positive", "negative", "neutral"];
 type Sentiment = (typeof sentiments)[number];
 
 const Tickets = () => {
+  useAuthRedirect();
   const [conversations, setConversations] =
     useState<Ticket[]>(conversationData);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);

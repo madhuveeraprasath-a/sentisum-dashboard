@@ -2,6 +2,7 @@
 
 import { Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import CardContainer from "../components/Cards/CardContainer";
 import EmptyCard from "../components/Cards/EmptyCard";
@@ -11,13 +12,16 @@ import FilterComponent from "../components/FilterComponent";
 import DashboardLoading from "../components/Loaders/DashboardLoading";
 import { CloseIcon } from "../components/svgs/CloseIcon";
 import dashboardInitialData from "../JSON/dashboardData.json";
+import { useAuthRedirect } from "../utills/useAuthRedirect";
 
 const Dashboard = () => {
+  useAuthRedirect();
   const [rawData, setRawData] = useState(dashboardInitialData.data);
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [showTextModal, setShowTextModal] = useState(false);
   const [form] = Form.useForm();
+  const router = useRouter();
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 3000);

@@ -15,6 +15,11 @@ const UserInfo = ({ userData }: UserInfoInterface) => {
   const router = useRouter();
 
   const onMenuClickHandler = (menu: HeaderMenu) => {
+    if (menu.id == "logout") {
+      localStorage.removeItem("isLoggedIn");
+      router.push("/");
+      return;
+    }
     if (pathname == menu.redirectionLink) return;
     if (menu?.redirectionLink) {
       router.push(menu?.redirectionLink);

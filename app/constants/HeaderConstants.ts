@@ -64,7 +64,6 @@ export const USER_INFO_DROPDOWN = [
   {
     id: "logout",
     name: "Logout",
-    redirectionLink: "/common-page",
   },
 ];
 
