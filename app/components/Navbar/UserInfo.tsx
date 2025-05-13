@@ -1,30 +1,17 @@
-import { UserInfoInterface } from "@/app/constants/Interface";
-import Avatar from "./Avatar";
-import HoverDropdown from "./HoverDropdown";
 import {
   HeaderMenu,
   USER_INFO_DROPDOWN,
 } from "@/app/constants/HeaderConstants";
+import { UserInfoInterface } from "@/app/constants/Interface";
 import { getIcon } from "@/app/utills/getIcon";
-import { usePathname, useRouter } from "next/navigation";
+import { useMenuClickHandler } from "@/app/utills/useMenuClickHandler";
+import Avatar from "./Avatar";
+import HoverDropdown from "./HoverDropdown";
 
 const UserInfo = ({ userData }: UserInfoInterface) => {
   const { name, email } = userData;
-
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const onMenuClickHandler = (menu: HeaderMenu) => {
-    if (menu.id == "logout") {
-      localStorage.removeItem("isLoggedIn");
-      router.push("/");
-      return;
-    }
-    if (pathname == menu.redirectionLink) return;
-    if (menu?.redirectionLink) {
-      router.push(menu?.redirectionLink);
-    }
-  };
+  
+  const { onMenuClickHandler } = useMenuClickHandler();
 
   return (
     <HoverDropdown

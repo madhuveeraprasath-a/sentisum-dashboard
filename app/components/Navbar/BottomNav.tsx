@@ -1,22 +1,17 @@
 "use client";
 import { HEADER_MENUS, HeaderMenu } from "@/app/constants/HeaderConstants";
 import { getIcon } from "@/app/utills/getIcon";
+import { useMenuClickHandler } from "@/app/utills/useMenuClickHandler";
 import { usePathname, useRouter } from "next/navigation";
 
 const BottomNav = () => {
-  const router = useRouter();
   const pathname = usePathname();
+
+  const { onMenuClickHandler } = useMenuClickHandler();
 
   if (pathname === "/") {
     return null;
   }
-
-  const onMenuClickHandler = (menu: HeaderMenu) => {
-    if (pathname == menu.redirectionLink) return;
-    if (menu?.redirectionLink) {
-      router.push(menu?.redirectionLink);
-    }
-  };
 
   return (
     <div>
@@ -36,6 +31,18 @@ const BottomNav = () => {
               </p>
             </div>
           ))}
+          <div
+            onClick={() =>
+              onMenuClickHandler({
+                id: "logout",
+                name: "Logout",
+              })
+            }
+            className={` flex flex-col items-center justify-center p-2 `}
+          >
+            {getIcon("logout")}
+            <p className="font-medium text-sm text-neutral-800">LOGOUT</p>
+          </div>
         </div>
       </div>
     </div>

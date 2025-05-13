@@ -1,28 +1,23 @@
 "use client";
+import { useMenuClickHandler } from "@/app/utills/useMenuClickHandler";
+import { CaretDownOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   HEADER_MENUS,
   HEADER_MORE_MENUS,
   HeaderMenu,
 } from "../../constants/HeaderConstants";
+import userData from "../../JSON/userInfo.json";
 import { getIcon } from "../../utills/getIcon";
 import SubscribeButton from "../SubscribeButton";
-import UserInfo from "./UserInfo";
-import userData from "../../JSON/userInfo.json";
-import { CaretDownOutlined } from "@ant-design/icons";
 import HoverDropdown from "./HoverDropdown";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
-  const onMenuClickHandler = (menu: HeaderMenu) => {
-    if (pathname == menu.redirectionLink) return;
-    if (menu?.redirectionLink) {
-      router.push(menu?.redirectionLink);
-    }
-  };
+  const { onMenuClickHandler } = useMenuClickHandler();
 
   if (pathname == "/") {
     return null;
