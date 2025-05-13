@@ -201,7 +201,10 @@ const Dashboard = () => {
                 <CardContainer data={item} />
               </div>
             ))}
-            <EmptyCard onCreateClickHandler={onCreateClickHandler} />
+            <EmptyCard
+              activeFilter={activeFilter}
+              onCreateClickHandler={onCreateClickHandler}
+            />
           </div>
         )}
 

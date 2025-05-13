@@ -6,10 +6,17 @@ import { getIcon } from "@/app/utills/getIcon";
 
 interface EmptyCardProps {
   onCreateClickHandler: (type: string) => void;
+  activeFilter: string;
 }
 
 const EmptyCard = (props: EmptyCardProps) => {
-  const { onCreateClickHandler } = props;
+  const { onCreateClickHandler, activeFilter } = props;
+
+  console.log("activeFilter", activeFilter);
+  const filteredOptions =
+    activeFilter === "all"
+      ? CreateOptions
+      : CreateOptions.filter((item) => item.type === activeFilter);
 
   return (
     <div
@@ -25,7 +32,7 @@ const EmptyCard = (props: EmptyCardProps) => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4">
-        {CreateOptions?.map((item: CreateOptionInterface) => (
+        {filteredOptions?.map((item: CreateOptionInterface) => (
           <div
             onClick={() => onCreateClickHandler(item.type)}
             key={item.title}
