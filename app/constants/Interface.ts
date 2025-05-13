@@ -51,7 +51,7 @@ interface Tag {
   increased: boolean;
 }
 
-interface Conversation {
+export interface Conversation {
   id: number;
   senderName: string;
   sentTime: string; // Example: "08/10/2023 07:31 PM"
