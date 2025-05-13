@@ -1,5 +1,6 @@
 "use client";
 
+import { Button, Form, Input, Select } from "antd";
 import CardContainer from "../components/Cards/CardContainer";
 import EmptyCard from "../components/Cards/EmptyCard";
 import CreateButton from "../components/CreateButton";
@@ -9,6 +10,7 @@ import DashboardLoading from "../components/Loaders/DashboardLoading";
 import { CloseIcon } from "../components/svgs/CloseIcon";
 import dashboardInitialData from "../JSON/dashboardData.json";
 import { useEffect, useState } from "react";
+import TextArea from "antd/es/input/TextArea";
 
 const Dashboard = () => {
   const [rawData, setRawData] = useState(dashboardInitialData.data); // holds all data
@@ -21,6 +23,7 @@ const Dashboard = () => {
     description: "",
     content: "",
   });
+  const [form] = Form.useForm();
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 3000);
@@ -162,18 +165,19 @@ const Dashboard = () => {
     }, 500);
   };
 
-  const handleTextAdd = () => {
+  const onFinish = (values: any) => {
     if (!textForm.title || !textForm.content) {
       return;
     }
 
     const newTextCard = {
       type: "text",
-      title: textForm.title || "My Text",
-      description: textForm.description || "This is a description of my text",
+      title: values.title || "My Text",
+      description: values.description || "This is a description of my text",
       stats: {},
       metrics: [],
-      text: textForm.content,
+      text: values.content,
+      category: values.category,
     };
 
     const updatedRaw = [...rawData, newTextCard];
@@ -238,45 +242,91 @@ const Dashboard = () => {
             <CloseIcon />
           </div>
           <div className="flex flex-col gap-4 p-4 mt-5">
-            <input
-              type="text"
-              placeholder="Enter title"
-              value={textForm.title}
-              onChange={(e) =>
-                setTextForm((prev) => ({ ...prev, title: e.target.value }))
-              }
-              className="border border-neutral-200 rounded px-3 py-2"
-            />
-            <input
-              type="text"
-              placeholder="Enter description"
-              value={textForm.description}
-              onChange={(e) =>
-                setTextForm((prev) => ({
-                  ...prev,
-                  description: e.target.value,
-                }))
-              }
-              className="border border-neutral-200 rounded px-3 py-2"
-            />
-            <textarea
-              placeholder="Enter content"
-              value={textForm.content}
-              onChange={(e) =>
-                setTextForm((prev) => ({
-                  ...prev,
-                  content: e.target.value,
-                }))
-              }
-              className="border border-neutral-200 rounded px-3 py-2 h-[300px]"
-            />
-
-            <button
-              onClick={handleTextAdd}
-              className="mt-2 w-full font-semibold bg-primary-500 text-white px-4 py-2 rounded self-start"
+            <p className="font-semibold text-lg">Add Text</p>
+            <Form
+              layout="vertical"
+              scrollToFirstError
+              form={form}
+              onFinish={onFinish}
+              className="mt-4"
             >
-              ADD TEXT
-            </button>
+              <Form.Item
+                label="Title"
+                name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter title",
+                  },
+                ]}
+              >
+                <Input
+                  onChange={(e) =>
+                    setTextForm((prev) => ({ ...prev, title: e.target.value }))
+                  }
+                  value={textForm.title}
+                  placeholder="Please enter name"
+                  className="border border-neutral-200 rounded px-3 py-2"
+                />
+              </Form.Item>
+
+              <Form.Item
+                label="Description"
+                name="description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter description",
+                  },
+                ]}
+              >
+                <Input
+                  value={textForm.description}
+                  onChange={(e) =>
+                    setTextForm((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
+                  placeholder="Please enter name"
+                  className="border border-neutral-200 rounded px-3 py-2"
+                />
+              </Form.Item>
+
+              <Form.Item
+                label="Content"
+                name="content"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter content",
+                  },
+                ]}
+              >
+                <TextArea
+                  value={textForm.content}
+                  onChange={(e) =>
+                    setTextForm((prev) => ({
+                      ...prev,
+                      content: e.target.value,
+                    }))
+                  }
+                  rows={4}
+                  className="border border-neutral-200 rounded px-3 py-2"
+                />
+              </Form.Item>
+
+              <Form.Item className="text-center">
+                <Button
+                  className="w-full font-semibold"
+                  type="primary"
+                  htmlType="submit"
+                  size="large"
+                >
+                  ADD TEXT
+                </Button>
+              </Form.Item>
+            </Form>
           </div>
         </CustomModal>
       )}

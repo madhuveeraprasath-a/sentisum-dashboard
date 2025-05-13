@@ -102,6 +102,7 @@
       "type": "text",
       "title": "My Text",
       "description": "This is a description of my text",
+      "category": "Gaming Support",
       "stats": {},
       "metrics": [],
       "text": "<div><p>This is text</p> <p>This is text</p><ol><li>One<li><li>One<li></ol></div>"
@@ -229,6 +230,7 @@
     {
       "type": "text",
       "title": "My Text",
+      "category": "Meal Kit Support",
       "description": "This is a description of my text",
       "stats": {},
       "metrics": [],
