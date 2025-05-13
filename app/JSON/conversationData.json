@@ -1,0 +1,301 @@
+[
+  {
+    "ticketId": 103210,
+    "tags": ["Game crashed", "Refund", "Game aborted"],
+    "sentiment": "positive",
+    "startedDate": "08/10/2023 07:30 PM",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Madhu",
+        "sentTime": "08/10/2023 07:31 PM",
+        "isSender": true,
+        "message": "Game is not working"
+      }
+    ]
+  },
+  {
+    "ticketId": 103211,
+    "tags": ["Login Issue", "Account Locked"],
+    "sentiment": "negative",
+    "startedDate": "08/11/2023 09:00 AM",
+    "channel": "API",
+    "SatisfactionRating": "unoffered",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Ankit",
+        "sentTime": "08/11/2023 09:01 AM",
+        "isSender": true,
+        "message": "I'm unable to log into my account"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/11/2023 09:05 AM",
+        "isSender": false,
+        "message": "Please try resetting your password"
+      },
+      {
+        "id": 1,
+        "senderName": "Ankit",
+        "sentTime": "08/11/2023 09:01 AM",
+        "isSender": true,
+        "message": "I'm unable to log into my account"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/11/2023 09:05 AM",
+        "isSender": false,
+        "message": "Please try resetting your password"
+      },
+      {
+        "id": 1,
+        "senderName": "Ankit",
+        "sentTime": "08/11/2023 09:01 AM",
+        "isSender": true,
+        "message": "I'm unable to log into my account"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/11/2023 09:05 AM",
+        "isSender": false,
+        "message": "Please try resetting your password"
+      },
+      {
+        "id": 1,
+        "senderName": "Ankit",
+        "sentTime": "08/11/2023 09:01 AM",
+        "isSender": true,
+        "message": "I'm unable to log into my account"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/11/2023 09:05 AM",
+        "isSender": false,
+        "message": "Please try resetting your password"
+      }
+    ]
+  },
+  {
+    "ticketId": 103212,
+    "tags": ["Payment Failed", "Refund"],
+    "sentiment": "neutral",
+    "startedDate": "08/12/2023 03:45 PM",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Sana",
+        "sentTime": "08/12/2023 03:46 PM",
+        "isSender": true,
+        "message": "I made a payment but the game didn’t unlock"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/12/2023 03:50 PM",
+        "isSender": false,
+        "message": "We're looking into it and will refund if needed"
+      }
+    ]
+  },
+  {
+    "ticketId": 103213,
+    "tags": ["Technical Issue", "Lagging"],
+    "sentiment": "negative",
+    "startedDate": "08/13/2023 10:15 AM",
+    "channel": "API",
+    "SatisfactionRating": "unoffered",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Raj",
+        "sentTime": "08/13/2023 10:16 AM",
+        "isSender": true,
+        "message": "The game is lagging a lot on my device"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/13/2023 10:20 AM",
+        "isSender": false,
+        "message": "Please try lowering the graphics settings"
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Test User",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Albha",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Beta",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Adams",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Zoho",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "Nitesh",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  },
+  {
+    "ticketId": 103214,
+    "tags": ["Feedback", "Gameplay", "Suggestions"],
+    "sentiment": "positive",
+    "channel": "Email",
+    "SatisfactionRating": "unoffered",
+    "startedDate": "08/14/2023 05:30 PM",
+    "conversations": [
+      {
+        "id": 1,
+        "senderName": "John",
+        "sentTime": "08/14/2023 05:31 PM",
+        "isSender": true,
+        "message": "Loved the new update! Could you add more levels?"
+      },
+      {
+        "id": 2,
+        "senderName": "Support",
+        "sentTime": "08/14/2023 05:35 PM",
+        "isSender": false,
+        "message": "Thanks for the feedback! We're planning more content soon."
+      }
+    ]
+  }
+]

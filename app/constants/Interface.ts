@@ -50,3 +50,21 @@ interface Tag {
   percentChange: number;
   increased: boolean;
 }
+
+interface Conversation {
+  id: number;
+  senderName: string;
+  sentTime: string; // Example: "08/10/2023 07:31 PM"
+  isSender: boolean;
+  message: string;
+}
+
+export interface Ticket {
+  ticketId: number;
+  tags: string[];
+  sentiment: string;
+  channel: string;
+  SatisfactionRating: string;
+  startedDate: string; // Example: "08/10/2023 07:30 PM"
+  conversations: Conversation[];
+}
