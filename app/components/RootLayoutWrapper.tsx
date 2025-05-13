@@ -16,6 +16,7 @@ const RootLayoutWrapper = ({ children }: { children: React.ReactNode }) => {
           </Suspense>
           <BottomNav />
           <Suspense fallback={<div className=""></div>}>{children}</Suspense>
+          <div className="md:hidden h-[80px]"></div>
         </Layout>
       </ConfigProvider>
     </StyledComponentsRegistry>

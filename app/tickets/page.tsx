@@ -57,7 +57,7 @@ const Tickets = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row md:h-[calc(100vh-160px)] md:mx-4 lg:mx-10 my-6 md:border border-neutral-300 md:rounded-lg md:shadow-md overflow-hidden">
+    <div className="flex flex-col lg:flex-row md:h-[calc(100vh-160px)] md:mx-4 lg:mx-10 md:my-6 md:border border-neutral-300 md:rounded-lg md:shadow-md overflow-hidden">
       <div className="w-full lg:w-1/4 md:border-b lg:border-b-0 lg:border-r border-neutral-300">
         <ConversationFilter
           sentiments={sentiments}
