@@ -141,7 +141,7 @@ const Dashboard = () => {
       };
     } else if (type === "text") {
       setShowTextModal(true);
-      return; // stop here, modal will handle adding
+      return;
     }
 
     // Add to raw data
@@ -176,8 +176,15 @@ const Dashboard = () => {
       text: textForm.content,
     };
 
-    const updatedData = [...dashboardData.data, newTextCard];
-    setDashboardData({ ...dashboardData, data: updatedData });
+    const updatedRaw = [...rawData, newTextCard];
+    setRawData(updatedRaw); // ✅ update rawData
+
+    if (activeFilter === "all" || activeFilter === "text") {
+      setDashboardData((prev) => ({
+        ...prev,
+        data: [...prev.data, newTextCard],
+      }));
+    }
 
     // Reset form and close modal
     setTextForm({ title: "", description: "", content: "" });
