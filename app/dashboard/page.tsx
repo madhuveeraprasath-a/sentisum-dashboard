@@ -2,7 +2,7 @@
 
 import { Button, Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CardContainer from "../components/Cards/CardContainer";
 import EmptyCard from "../components/Cards/EmptyCard";
 import CreateButton from "../components/CreateButton";
@@ -13,16 +13,10 @@ import { CloseIcon } from "../components/svgs/CloseIcon";
 import dashboardInitialData from "../JSON/dashboardData.json";
 
 const Dashboard = () => {
-  const [rawData, setRawData] = useState(dashboardInitialData.data); // holds all data
-  const [dashboardData, setDashboardData] = useState(dashboardInitialData); // used for filtered view
+  const [rawData, setRawData] = useState(dashboardInitialData.data);
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [showTextModal, setShowTextModal] = useState(false);
-  const [textForm, setTextForm] = useState({
-    title: "",
-    description: "",
-    content: "",
-  });
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -30,28 +24,27 @@ const Dashboard = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const filteredData = useMemo(() => {
+    if (activeFilter === "all") return rawData;
+    return rawData.filter((item) => item.type === activeFilter.toLowerCase());
+  }, [rawData, activeFilter]);
+
   const filterHandler = (filter: string) => {
     setLoading(true);
     setActiveFilter(filter);
 
-    let filteredData;
-
-    if (!filter || filter.toLowerCase() === "all") {
-      filteredData = rawData;
-    } else {
-      filteredData = rawData.filter(
-        (item) => item.type === filter.toLowerCase()
-      );
-    }
-
+    // Simulate loading delay
     setTimeout(() => {
-      setDashboardData({ ...dashboardData, data: filteredData });
       setLoading(false);
     }, 500);
   };
 
   const onCreateClickHandler = (type: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (type === "text") {
+      setShowTextModal(true);
+      return;
+    }
+
     let data: any;
     if (type === "report") {
       data = {
@@ -142,38 +135,25 @@ const Dashboard = () => {
         ],
         text: "",
       };
-    } else if (type === "text") {
-      setShowTextModal(true);
-      return;
     }
 
-    // Add to raw data
     const updatedRaw = [...rawData, data];
     setRawData(updatedRaw);
 
-    // Filter if current filter matches or is 'all'
-    if (activeFilter === "all" || data.type === activeFilter) {
-      setDashboardData((prev) => ({
-        ...prev,
-        data: [...prev.data, data],
-      }));
-    }
-
-    // Scroll to bottom
     setTimeout(() => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }, 500);
   };
 
-  const onFinish = (values: { title: ""; description: ""; content: "" }) => {
-    if (!textForm.title || !textForm.content) {
-      return;
-    }
-
+  const onFinish = (values: {
+    title: string;
+    description: string;
+    content: string;
+  }) => {
     const newTextCard = {
       type: "text",
-      title: values.title || "My Text",
-      description: values.description || "This is a description of my text",
+      title: values.title,
+      description: values.description,
       stats: {},
       metrics: [],
       text: values.content,
@@ -181,17 +161,9 @@ const Dashboard = () => {
     };
 
     const updatedRaw = [...rawData, newTextCard];
-    setRawData(updatedRaw); // ✅ update rawData
+    setRawData(updatedRaw);
 
-    if (activeFilter === "all" || activeFilter === "text") {
-      setDashboardData((prev) => ({
-        ...prev,
-        data: [...prev.data, newTextCard],
-      }));
-    }
-
-    // Reset form and close modal
-    setTextForm({ title: "", description: "", content: "" });
+    form.resetFields();
     setShowTextModal(false);
 
     setTimeout(() => {
@@ -200,136 +172,106 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container flex flex-col gap-5 mx-auto mt-5 p-4">
-      <div className="flex justify-between items-center border-b border-neutral-300 pb-5">
-        <div>
-          <p className="text-xl font-semibold">{dashboardData?.title}</p>
-          <p>{dashboardData?.description}</p>
+    <div>
+      <div className="px-10 py-5 sticky top-[80px] z-20 bg-white pb-5  flex flex-col gap-5">
+        <div className="flex justify-between items-center border-b border-neutral-300 pb-5">
+          <div>
+            <p className="text-xl font-semibold">
+              {dashboardInitialData.title}
+            </p>
+            <p>{dashboardInitialData.description}</p>
+          </div>
+          <div>
+            <CreateButton onCreateClickHandler={onCreateClickHandler} />
+          </div>
         </div>
-        <div>
-          <CreateButton
-            onCreateClickHandler={(type) => onCreateClickHandler(type)}
-          />
-        </div>
+
+        <FilterComponent
+          onFilterClick={filterHandler}
+          activeFilter={activeFilter}
+        />
       </div>
-
-      <FilterComponent
-        onFilterClick={(filter) => filterHandler(filter)}
-        activeFilter={activeFilter}
-      />
-
-      {loading ? (
-        <DashboardLoading />
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {dashboardData?.data?.map((item, index) => (
-            <div key={`${item.title}+${index}`}>
-              <CardContainer data={item} />
-            </div>
-          ))}
-          <EmptyCard
-            onCreateClickHandler={(type) => onCreateClickHandler(type)}
-          />
-        </div>
-      )}
-
-      {showTextModal && (
-        <CustomModal isOpen={showTextModal} modalClass="w-[600px] h-auto">
-          <div
-            onClick={() => setShowTextModal(false)}
-            className="absolute top-2 right-2 cursor-pointer"
-          >
-            <CloseIcon />
+      <div className="container flex flex-col gap-5 mx-auto mt-5 p-4">
+        {loading ? (
+          <DashboardLoading />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredData.map((item, index) => (
+              <div key={`${item.title}+${index}`}>
+                <CardContainer data={item} />
+              </div>
+            ))}
+            <EmptyCard onCreateClickHandler={onCreateClickHandler} />
           </div>
-          <div className="flex flex-col gap-4 p-4 mt-5">
-            <p className="font-semibold text-lg">Add Text</p>
-            <Form
-              layout="vertical"
-              scrollToFirstError
-              form={form}
-              onFinish={onFinish}
-              className="mt-4"
+        )}
+
+        {showTextModal && (
+          <CustomModal isOpen={showTextModal} modalClass="w-[600px] h-auto">
+            <div
+              onClick={() => setShowTextModal(false)}
+              className="absolute top-2 right-2 cursor-pointer"
             >
-              <Form.Item
-                label="Title"
-                name="title"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter title",
-                  },
-                ]}
+              <CloseIcon />
+            </div>
+            <div className="flex flex-col gap-4 p-4 mt-5">
+              <p className="font-semibold text-lg">Add Text</p>
+              <Form
+                layout="vertical"
+                scrollToFirstError
+                form={form}
+                onFinish={onFinish}
+                className="mt-4"
               >
-                <Input
-                  onChange={(e) =>
-                    setTextForm((prev) => ({ ...prev, title: e.target.value }))
-                  }
-                  value={textForm.title}
-                  placeholder="Please enter name"
-                  className="border border-neutral-200 rounded px-3 py-2"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="Description"
-                name="description"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter description",
-                  },
-                ]}
-              >
-                <Input
-                  value={textForm.description}
-                  onChange={(e) =>
-                    setTextForm((prev) => ({
-                      ...prev,
-                      description: e.target.value,
-                    }))
-                  }
-                  placeholder="Please enter name"
-                  className="border border-neutral-200 rounded px-3 py-2"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="Content"
-                name="content"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter content",
-                  },
-                ]}
-              >
-                <TextArea
-                  value={textForm.content}
-                  onChange={(e) =>
-                    setTextForm((prev) => ({
-                      ...prev,
-                      content: e.target.value,
-                    }))
-                  }
-                  rows={4}
-                  className="border border-neutral-200 rounded px-3 py-2"
-                />
-              </Form.Item>
-
-              <Form.Item className="text-center">
-                <Button
-                  className="w-full font-semibold"
-                  type="primary"
-                  htmlType="submit"
-                  size="large"
+                <Form.Item
+                  label="Title"
+                  name="title"
+                  rules={[{ required: true, message: "Please enter title" }]}
                 >
-                  ADD TEXT
-                </Button>
-              </Form.Item>
-            </Form>
-          </div>
-        </CustomModal>
-      )}
+                  <Input
+                    placeholder="Please enter title"
+                    className="border border-neutral-200 rounded px-3 py-2"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  label="Description"
+                  name="description"
+                  rules={[
+                    { required: true, message: "Please enter description" },
+                  ]}
+                >
+                  <Input
+                    placeholder="Please enter description"
+                    className="border border-neutral-200 rounded px-3 py-2"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  label="Content"
+                  name="content"
+                  rules={[{ required: true, message: "Please enter content" }]}
+                >
+                  <TextArea
+                    rows={4}
+                    className="border border-neutral-200 rounded px-3 py-2"
+                  />
+                </Form.Item>
+
+                <Form.Item className="text-center">
+                  <Button
+                    className="w-full font-semibold"
+                    type="primary"
+                    htmlType="submit"
+                    size="large"
+                  >
+                    ADD TEXT
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
+          </CustomModal>
+        )}
+      </div>
     </div>
   );
 };
